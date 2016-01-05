@@ -1,3 +1,7 @@
+var appvars = {
+  server: 'http://localhost:8000/'
+};
+
 function promisifyPartial(partial) {
   return new Promise(function(success, failure) {
     $.get(partial.file).done(function(text) {
@@ -11,7 +15,7 @@ function promisifyPartial(partial) {
 
 function promiseToLoad() {
   return new Promise(function(success) {
-    .ready(function() {
+    $(document).ready(function() {
       success();
     });
   });
@@ -20,7 +24,7 @@ function promiseToLoad() {
 Promise.all([
   // first ajax request
   $.ajax({
-    url: appvars.server,
+    url: appvars.server + 'broncos',
     method: 'get'
   }),
   // partial
@@ -28,7 +32,7 @@ Promise.all([
   // Document Ready?
   promiseToLoad()
 ]).then(function(datas) {
-  pageLoaded(data[0]);
+  pageLoaded(datas[0]);
 });
 
 Handlebars.registerHelper('compare', function(val1, val2, options) {

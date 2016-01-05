@@ -10,21 +10,21 @@ gulp.task('default', ['batch', 'watch']);
 
 // HTML Minify to ./build/
 gulp.task('htmlProcess', function() {
-  return gulp.src('./build/**/*.html')
+  return gulp.src('./src/**/*.html')
     .pipe(htmlMinify().on('error', console.log))
     .pipe(gulp.dest('./build/'));
 });
 gulp.task('hbsProcess', function() {
-  return gulp.src('./build/**/*.hbs')
+  return gulp.src('./src/**/*.hbs')
     .pipe(htmlMinify().on('error', console.log))
     .pipe(gulp.dest('./build/'));
 });
 
 // SCSS Transpile to ./build/css
 gulp.task('scssProcess', function() {
-  return gulp.src('./build/scss/**/*.scss')
+  return gulp.src('./src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./build/css/'));
+    .pipe(gulp.dest('./src/css/'));
 });
 
 // CSS concat & minify to ./build/style
