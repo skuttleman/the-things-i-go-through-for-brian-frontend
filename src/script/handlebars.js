@@ -28,7 +28,10 @@ Promise.all([
     method: 'get'
   }),
   // partial
-  promisifyPartial({ name: 'partial', file: '/templates/partial.hbs' }),
+  promisifyPartial({ name: 'header', file: '/templates/header.hbs' }),
+  promisifyPartial({ name: 'broncos', file: '/templates/broncos.hbs' }),
+  promisifyPartial({ name: 'loginform', file: '/templates/login-form.hbs' }),
+  promisifyPartial({ name: 'playerform', file: '/templates/player-form.hbs' }),
   // Document Ready?
   promiseToLoad()
 ]).then(function(datas) {
@@ -39,3 +42,10 @@ Handlebars.registerHelper('compare', function(val1, val2, options) {
   if (val1 == val2) return options.fn(this);
   else return options.inverse(this);
 });
+
+function displayTemplate(selector, partial, data) {
+  var signedIn = !!decodeURIComponent(document.cookie).split('user=s:')[1];
+  var template = Handlebars.compile(Handlebars.partials[partial]);
+  data.signedIn = signedIn;
+  $(selector).html(template(data));
+}

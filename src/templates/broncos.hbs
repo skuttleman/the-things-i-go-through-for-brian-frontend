@@ -1,0 +1,18 @@
+<ul>
+  {{#each broncos}}
+    <li>
+      <h2>{{name}}</h2>
+      <p>Favorite Number: {{favorite_number}}</p>
+      <p>Favorite Color: {{favorite_color}}</p>
+      <p>Height: {{heightString}}</p>
+      <p>IQ: {{iq}}</p>
+      {{#if ../signedIn}}
+        <button type="button" name="button" onclick="editPlayer({{id}});">Edit Player</button>
+        <button type="button" name="button" onclick="deletePlayer({{id}});">Delete Player</button>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
+{{#if signedIn}}
+  <button type="button" name="button" onclick="addPlayer();">Add Player</button>
+{{/if}}

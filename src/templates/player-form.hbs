@@ -1,0 +1,18 @@
+<form action="/" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="{{name}}" />
+  <label for="favorite_number">Favorite Number:</label>
+  <input type="number" name="favorite_number" id="favorite_number" value="{{favorite_number}}" />
+  <label for="favorite_color">Favorite Color:</label>
+  <input type="text" name="favorite_color" id="favorite_color" value="{{favorite_color}}" />
+  <label for="height">Height:</label>
+  <input type="number" name="height" id="height" value="{{height}}" />
+  <label for="iq">IQ:</label>
+  <input type="number" name="iq" id="iq" value="{{iq}}" />
+  {{#if params}}
+    <button type="button" class="post-button" onclick="{{postMethod}}(event, {{params}});">{{postText}}</button>
+  {{else}}
+    <button type="button" class="post-button" onclick="{{postMethod}}(event);">{{postText}}</button>
+  {{/if}}
+  <button type="button" class="cancel-button" onclick="cancel(event);">Cancel</button>
+</form>
